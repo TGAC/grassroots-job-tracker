@@ -8,13 +8,10 @@ from .mongo import insert_to_test_collection, get_all_from_test_collection
 
 # Create your views here.
 def index(request):
+    return render(request, 'index.html', {})
 
-    x = dict()
-
-    x['items'] = ['abc', 'def', 'ghi']
-    x['title'] = "Goodbye World"
-
-    return render(request, 'index.html', {'data': x})
+def rest_index(request):
+    return render(request, 'rest_index.html', {})
 
 
 def mongo_insert(request):

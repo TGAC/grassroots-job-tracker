@@ -16,8 +16,10 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 import apps.jobTrackerWebapp.urls as rest_urls
+import apps.jobTrackerWebapp.views as views
 
 urlpatterns = [
+    url(r'^$', views.index, name='index'),
     url(r'^admin/', admin.site.urls),
     url(r'^rest/', include(rest_urls), name='rest_urls')
 ]
