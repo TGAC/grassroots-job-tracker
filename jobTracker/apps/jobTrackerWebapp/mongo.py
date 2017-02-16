@@ -16,6 +16,8 @@ def cursor_to_list(cursor):
 
 test_collection = "test_collection"
 
+job_collection = "job_collection"
+
 
 def insert_to_test_collection(data):
     # assume data is a python dictionary
@@ -24,3 +26,16 @@ def insert_to_test_collection(data):
 
 def get_all_from_test_collection():
     return cursor_to_list(get_collection_ref(test_collection).find({}))
+
+
+
+def insert_to_job_collection(data):
+    # assume data is a python dictionary
+    get_collection_ref(job_collection).insert(data)
+
+
+def get_from_job_collection(data):
+    return cursor_to_list(get_collection_ref(job_collection).find(data))
+
+def get_all_from_job_collection():
+    return cursor_to_list(get_collection_ref(job_collection).find({}))
