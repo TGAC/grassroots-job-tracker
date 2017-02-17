@@ -3,7 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <title>View all Jobs</title>
+</head>
+<body>
+    <h1>View all Jobs</h1>
 
+    <p>Number of jobs: {{ data|length }}</p>
 
     <ul>
         {% for element in data %}
@@ -12,9 +16,5 @@
 
         {% endfor %}
     </ul>
-
-</head>
-<body>
-
 </body>
 </html>

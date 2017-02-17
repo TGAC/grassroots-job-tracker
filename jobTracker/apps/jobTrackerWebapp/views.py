@@ -22,7 +22,7 @@ def mongo_view(request):
     document = get_all_from_test_collection()
     return render(request, 'mongo_test.html', {'data': document})
 
-def mongo_view_all_job(request):
+def mongo_view_all_jobs(request):
     document = get_all_from_job_collection()
     return render(request, 'view_all_jobs.html', {'data': document})
 
