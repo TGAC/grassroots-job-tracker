@@ -5,7 +5,7 @@ A simple job status tracker using Django and MongoDB, to provide REST interface 
 <h1>REST interface</h1>
 <h2>GET</h2>
 <ul>
-    <li>/rest/view_all_job</li>
+    <li>/rest/view_all_jobs (html page for viewing)</li>
     <li>/rest/insert_job?job_uuid=123&amp;status=started</li>
     <li>/rest/get_job?job_uuid=123</li>
     <li>/rest/update_job?job_uuid=123&amp;status=started</li>

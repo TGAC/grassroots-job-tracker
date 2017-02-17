@@ -15,23 +15,12 @@ def cursor_to_list(cursor):
     return records
 
 
-test_collection = "test_collection"
-
 job_collection = "job_collection"
 
 
-def insert_to_test_collection(data):
-    # assume data is a python dictionary
-    get_collection_ref(test_collection).insert(data)
-
-
-def get_all_from_test_collection():
-    return cursor_to_list(get_collection_ref(test_collection).find({}))
-
-
-def insert_to_job_collection(uuid,status):
-    # assume data is a python dictionary
-    get_collection_ref(job_collection).insert({"job_uuid": uuid, "status": status, "timestamp": str(datetime.now())})
+# def insert_to_job_collection(uuid,status):
+#     # assume data is a python dictionary
+#     get_collection_ref(job_collection).insert({"job_uuid": uuid, "status": status, "timestamp": str(datetime.now())})
 
 
 def get_from_job_collection(data):
@@ -42,6 +31,6 @@ def get_all_from_job_collection():
     return cursor_to_list(get_collection_ref(job_collection).find({}))
 
 
-def update_job(uuid, status):
-    # assume data is a python dictionary
-    get_collection_ref(job_collection).update({"job_uuid": uuid}, {"$set": {"status": status, "timestamp": str(datetime.now())}})
+def update_job(server_id, job_uuid, job_dict):
+    get_collection_ref(job_collection).update({'job.job_uuid': job_uuid}, {
+        '$set': {'server_id': server_id, 'job': job_dict, 'timestamp': str(datetime.now())}}, True)
