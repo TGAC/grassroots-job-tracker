@@ -4,6 +4,11 @@ A simple job status tracker using Django and MongoDB, to provide REST interface 
 
 <p>Using Django and MongoDB</p>
 
+
+<ul>
+    <li><a href="/view_jobs">View all jobs in html</a></li>
+</ul>
+
 <h2>REST interface</h2>
 <h3>GET</h3>
 <ul>

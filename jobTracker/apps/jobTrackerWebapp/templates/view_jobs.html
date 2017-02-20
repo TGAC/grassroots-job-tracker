@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>View all Jobs</title>
+    {% load static %}
+    <!--jQuery-->
+    <script type="text/javascript" src="{% static 'scripts/jquery/js/jquery-3.1.1.min.js'%}"></script>
+
+    <!-- bootstrap -->
+    <script src="{% static 'scripts/bootstrap/js/bootstrap.min.js'%}"
+            type="text/javascript"></script>
+    <link href="{% static 'scripts/bootstrap/css/bootstrap.min.css'%}" rel="stylesheet" type="text/css"/>
+
+    <!-- datatable -->
+    <script src="{% static 'scripts/jquery/datatables/js/jquery.dataTables.min.js'%}" type="text/javascript"></script>
+    <link href="{% static 'scripts/jquery/datatables/css/jquery.dataTables.css'%}" rel="stylesheet" type="text/css"/>
+    <!--<link href="{% static 'scripts/jquery/datatables/css/dataTables.bootstrap.min.css'%}" rel="stylesheet" type="text/css"/>-->
+    <!--<script src="{% static 'scripts/jquery/datatables/js/dataTables.fixedColumns.min.js'%}"-->
+    <!--type="text/javascript"></script>-->
+</head>
+<body>
+<h1>View all Jobs</h1>
+
+<p>Number of jobs: {{ data|length }}</p>
+
+<table id="job_table" class=" display table .table-condensed .table-hover .table-bordered" cellspacing="0" >
+    <thead>
+    <tr>
+        <td>Job ID</td>
+        <td>Status</td>
+        <td>Service</td>
+        <td>Description</td>
+        <td>Server</td>
+        <td>Timestamp</td>
+    </tr>
+    </thead>
+
+    <tbody>
+
+    {% for element in data %}
+
+    <tr>
+        <td>{{ element.job.job_uuid }}</td>
+        <td>{{ element.job.status_text }}</td>
+        <td>{{ element.job.service_name }}</td>
+        <td>{{ element.job.description }}</td>
+        <td>{{ element.server_id }}</td>
+        <td>{{ element.timestamp }}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#job_table').DataTable()
+    });
+
+
+</script>
+</body>
+</html>

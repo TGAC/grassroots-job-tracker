@@ -25,7 +25,7 @@ def mongo_view(request):
 
 def mongo_view_all_jobs(request):
     document = get_all_from_job_collection()
-    return render(request, 'view_all_jobs.html', {'data': document})
+    return render(request, 'view_jobs.html', {'data': document})
 
 # def mongo_insert_job(request):
 #     insert_to_job_collection(request.GET['job_uuid'], request.GET['status'])
