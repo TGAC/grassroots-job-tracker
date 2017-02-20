@@ -7,7 +7,7 @@ A simple job status tracker using Django and MongoDB, to provide REST interface 
 <h2>REST interface</h2>
 <h3>GET</h3>
 <ul>
-    <li>/rest/get_all_jobs</li>
+    <li>/rest/get_jobs</li>
     <li>/rest/get_job/job_id</li>
 
 </ul>

@@ -9,12 +9,27 @@
 
     <p>Number of jobs: {{ data|length }}</p>
 
-    <ul>
+    <table>
+        <th>
+            <td>Job ID</td>
+            <td>Status</td>
+            <td>Service</td>
+            <td>Description</td>
+            <td>Server</td>
+            <td>Timestamp</td>
+        </th>
+
         {% for element in data %}
 
-        <li>Server ID: {{ element.server_id }} : Job &nbsp; {{ element.job.job_uuid }} - {{ element.job.status_text }} at {{ element.timestamp }}</li>
-
+        <tr>
+            <td>{{ element.job.job_uuid }}</td>
+            <td>{{ element.job.status_text }}</td>
+            <td>{{ element.job.service_name }}</td>
+            <td>{{ element.job.description }}</td>
+            <td>{{ element.server_id }}</td>
+            <td>{{ element.timestamp }}</td>
+        </tr>
         {% endfor %}
-    </ul>
+    </table>
 </body>
 </html>
