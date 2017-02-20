@@ -23,8 +23,8 @@ job_collection = "job_collection"
 #     get_collection_ref(job_collection).insert({"job_uuid": uuid, "status": status, "timestamp": str(datetime.now())})
 
 
-def get_from_job_collection(data):
-    return cursor_to_list(get_collection_ref(job_collection).find(data))
+def get_from_job_collection(job_uuid):
+    return cursor_to_list(get_collection_ref(job_collection).find({'job.job_uuid': job_uuid}))
 
 
 def get_all_from_job_collection():
