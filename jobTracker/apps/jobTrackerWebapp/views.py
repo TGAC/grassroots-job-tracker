@@ -1,6 +1,7 @@
 import ast
 from django.shortcuts import render, reverse
-from django.http import HttpRequest, HttpResponse, HttpResponseRedirect
+from django.http import HttpRequest, HttpResponse, HttpResponseRedirect, JsonResponse
+import bson.json_util as json
 from .mongo import *
 from django.views.decorators.csrf import csrf_exempt
 
@@ -27,17 +28,13 @@ def mongo_view_all_jobs(request):
     document = get_all_from_job_collection()
     return render(request, 'view_jobs.html', {'data': document})
 
-# def mongo_insert_job(request):
-#     insert_to_job_collection(request.GET['job_uuid'], request.GET['status'])
-#     return HttpResponse("ok")
-
 def mongo_get_job(request, job_id):
     document = get_from_job_collection(job_id)
-    return HttpResponse(document)
+    return HttpResponse(json.dumps(document))
 
 def mongo_get_all_jobs(request):
     document = get_all_from_job_collection()
-    return HttpResponse(document)
+    return HttpResponse(json.dumps(document))
 
 @csrf_exempt
 def mongo_update_job(request, server_id):
