@@ -1,13 +1,6 @@
 # Job-Tracker
+<p>A simple job status tracker using Django and MongoDB, to provide REST interface for job status. Using Django and MongoDB</p>
 
-A simple job status tracker using Django and MongoDB, to provide REST interface for job status.
-
-<p>Using Django and MongoDB</p>
-
-
-<ul>
-    <li><a href="/view_jobs">View all jobs in html</a></li>
-</ul>
 
 <h2>REST interface</h2>
 <h3>GET</h3>
@@ -23,3 +16,9 @@ A simple job status tracker using Django and MongoDB, to provide REST interface 
 </ul>
 
 <p>rest interface takes care of timestamp when inserting and updating</p>
+
+<h2>HTML view</h2>
+
+<p>Using jQuery and DataTable</p>
+
+<p><a href="/view_jobs">View all jobs in html</p>
