@@ -45,5 +45,5 @@ def mongo_update_job(request, server_id):
     job_complete = ast.literal_eval(request.body.decode("utf-8"))
     job_dict = job_complete.get('job')
     job_uuid = job_dict.get('job_uuid')
-    update_job(server_id, job_uuid, job_dict)
-    return HttpResponse("ok")
+    response = update_job(server_id, job_uuid, job_dict)
+    return HttpResponse(response)
