@@ -28,9 +28,9 @@ def get_from_job_collection(job_uuid):
 
 
 def get_all_from_job_collection():
-    return list(cursor_to_list(get_collection_ref(job_collection).find({})))
+    return cursor_to_list(get_collection_ref(job_collection).find({}))
 
 
 def update_job(server_id, job_uuid, job_dict):
     return get_collection_ref(job_collection).update({'job.job_uuid': job_uuid}, {
-        '$set': {'server_id': server_id, 'job': job_dict, 'timestamp': str(datetime.now())}}, True)
+        '$set': {'server_id': server_id, 'job': job_dict, 'timestamp': str(datetime.now().strftime("%Y-%m-%d %H:%M:%S"))}}, True)
