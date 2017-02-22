@@ -23,7 +23,7 @@ import apps.jobTrackerWebapp.views as views
 urlpatterns = [
     url(r'^$', views.index, name='index'),
     url(r'^view_jobs', views.mongo_view_all_jobs, name="view_all_jobs"),
-    # url(r'^static/(?P<path>.*)$', django.contrib.staticfiles),
+    url(r'^view_job/(?P<job_id>[A-z0-9-]+)$', views.mongo_view_job, name="view_job"),
     url(r'^admin/', admin.site.urls),
     url(r'^rest/', include(rest_urls), name='rest_urls')
 ]

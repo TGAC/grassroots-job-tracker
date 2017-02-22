@@ -15,18 +15,13 @@ def index(request):
 def rest_index(request):
     return render(request, 'rest_index.html', {})
 
-
-def mongo_insert(request):
-    insert_to_test_collection({"name": request.GET['name'], "age": request.GET['age']})
-    return HttpResponseRedirect(reverse("view"))
-
-def mongo_view(request):
-    document = get_all_from_test_collection()
-    return render(request, 'mongo_test.html', {'data': document})
-
 def mongo_view_all_jobs(request):
     document = get_all_from_job_collection()
     return render(request, 'view_jobs.html', {'data': document})
+
+def mongo_view_job(request, job_id):
+    document = get_from_job_collection(job_id)
+    return render(request, 'view_job.html', {'data': json.dumps(document)})
 
 def mongo_get_job(request, job_id):
     document = get_from_job_collection(job_id)
