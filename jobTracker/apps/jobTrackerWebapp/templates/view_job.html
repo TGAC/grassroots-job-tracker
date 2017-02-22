@@ -26,8 +26,7 @@
 <script type="text/javascript">
 
     $(document).ready(function () {
-        var job_json = JSON.parse('{{ data|safe }}');
-        $('#job_viewer').jsonViewer(job_json[0], {collapsed: false, withQuotes: true});
+        $('#job_viewer').jsonViewer({{ data|safe }}, {collapsed: false, withQuotes: true});
 
     });
 </script>
