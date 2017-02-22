@@ -31,10 +31,10 @@
     <div class="row">
 
         <div class="col-md-4">
-            <div id="slider"></div>
+            <div id="status_select"></div>
         </div>
         <div class="col-md-4">
-            <div id="status_select"></div>
+            <div id="slider" style="margin:0 20px;"></div>
         </div>
         <div class="col-md-4">
             <div id="server_select"></div>
@@ -77,6 +77,7 @@
 
     $(document).ready(function () {
         job_table = $('#job_table').DataTable({
+        "order": [[ 5, "desc" ]],
         initComplete: function () {
             var column = this.api().column(1);
             var select = $('<select class="form-control"><option value="">Select Status</option></select>')
@@ -116,11 +117,11 @@
         $("#slider").dateRangeSlider({
             bounds: {
                 min: new Date(2017, 0, 1),
-                max: new Date(2025, 12, 31)
+                max: new Date(2018, 11, 31)
             },
             defaultValues: {
                 min: new Date(2017, 0, 1),
-                max: new Date(2018, 12, 31)
+                max: new Date(2018, 11, 31)
             }
         });
 
@@ -138,8 +139,11 @@
     function (oSettings, aData, iDataIndex) {
         var dateStart = datemin;
         var dateEnd = datemax;
+        console.log("min+max "+datemin+"+"+datemax);
 
-        var evalDate = Date.parse(aData[5]);
+        var evalDate = convertDateTime(aData[5]);
+        console.log("aData[5] "+aData[5]);
+        console.log("eval "+evalDate);
 
         if (((evalDate >= dateStart && evalDate <= dateEnd) || (evalDate >= dateStart && dateEnd == 0)
             || (evalDate >= dateEnd && dateStart == 0)) || (dateStart == 0 && dateEnd == 0)) {
@@ -150,6 +154,22 @@
         }
 
     });
+
+    function convertDateTime(dateTime){
+    dateTime = dateTime.split(" ");
+
+    var date = dateTime[0].split("-");
+    var yyyy = date[0];
+    var mm = date[1]-1;
+    var dd = date[2];
+
+    var time = dateTime[1].split(":");
+    var h = time[0];
+    var m = time[1];
+    var s = parseInt(time[2]); //get rid of that 00.0;
+
+    return new Date(yyyy,mm,dd,h,m,s);
+}
 
 </script>
 </body>
