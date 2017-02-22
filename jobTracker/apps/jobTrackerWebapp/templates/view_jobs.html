@@ -46,7 +46,7 @@
             <td>Job ID</td>
             <td>Status</td>
             <td>Service</td>
-            <td>Description</td>
+            <td>Name</td>
             <td>Server</td>
             <td>Timestamp</td>
         </tr>
@@ -60,7 +60,7 @@
             <td><a href="/view_job/{{ element.job_uuid }}" target="_blank">{{ element.job_uuid }}</a></td>
             <td>{{ element.status_text }}</td>
             <td>{{ element.service_name }}</td>
-            <td>{{ element.description }}</td>
+            <td>{{ element.name }}</td>
             <td>{{ element.server_id }}</td>
             <td>{{ element.timestamp }}</td>
         </tr>
@@ -164,10 +164,10 @@
     var time = dateTime[1].split(":");
     var h = time[0];
     var m = time[1];
-    var s = parseInt(time[2]); //get rid of that 00.0;
+    var s = parseInt(time[2]);
 
     return new Date(yyyy,mm,dd,h,m,s);
-}
+    }
 
 </script>
 </body>
