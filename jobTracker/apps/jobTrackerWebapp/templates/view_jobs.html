@@ -57,7 +57,7 @@
         {% for element in data %}
 
         <tr>
-            <td>{{ element.job_uuid }}</td>
+            <td><a href="/rest/get_job/{{ element.job_uuid }}" target="_blank">{{ element.job_uuid }}</a></td>
             <td>{{ element.status_text }}</td>
             <td>{{ element.service_name }}</td>
             <td>{{ element.description }}</td>
