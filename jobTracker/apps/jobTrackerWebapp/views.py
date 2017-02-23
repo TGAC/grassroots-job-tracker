@@ -39,4 +39,10 @@ def mongo_update_job(request, server_id):
     job_dict['server_id'] = server_id
     job_dict['timestamp'] = str(datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
     response = update_job(job_collection).update({'job_uuid': job_uuid, "server_id": server_id}, {"$set":job_dict}, True)
-    return HttpResponse(response)
+    return HttpResponse(json.dumps(response))
+
+def error404_handler(request):
+    return HttpResponse("404", content_type='text/html; charset=utf-8', status=404)
+
+def error500_handler(request):
+    return HttpResponse("500", content_type='text/html; charset=utf-8', status=500)

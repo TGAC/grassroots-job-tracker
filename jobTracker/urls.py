@@ -13,7 +13,7 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
-from django.conf.urls import url, include
+from django.conf.urls import url, include, handler404, handler500
 from django.contrib import admin
 import apps.jobTrackerWebapp.urls as rest_urls
 import apps.jobTrackerWebapp.views as views
@@ -27,3 +27,6 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^rest/', include(rest_urls), name='rest_urls')
 ]
+
+handler404 = views.error404_handler
+handler500 = views.error500_handler
