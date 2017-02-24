@@ -25,8 +25,9 @@ urlpatterns = [
     url(r'^view_jobs', views.mongo_view_all_jobs, name="view_all_jobs"),
     url(r'^view_job/(?P<job_id>[A-z0-9-]+)$', views.mongo_view_job, name="view_job"),
     url(r'^admin/', admin.site.urls),
-    url(r'^rest/', include(rest_urls), name='rest_urls'),
-    url(r'^static/(?P<path>.*)$', serve, {'document_root': settings.STATICFILES_DIRS})
+    url(r'^rest/', include(rest_urls), name='rest_urls')
+    #,
+    #url(r'^static/(?P<path>.*)$', serve, {'document_root': settings.STATICFILES_DIRS})
 ]
 
 handler404 = views.error404_handler
