@@ -17,15 +17,16 @@ from django.conf.urls import url, include, handler404, handler500
 from django.contrib import admin
 import apps.jobTrackerWebapp.urls as rest_urls
 import apps.jobTrackerWebapp.views as views
-
-# import apps.settings as settings
+from django.views.static import serve
+from django.conf import settings
 
 urlpatterns = [
     url(r'^$', views.index, name='index'),
     url(r'^view_jobs', views.mongo_view_all_jobs, name="view_all_jobs"),
     url(r'^view_job/(?P<job_id>[A-z0-9-]+)$', views.mongo_view_job, name="view_job"),
     url(r'^admin/', admin.site.urls),
-    url(r'^rest/', include(rest_urls), name='rest_urls')
+    url(r'^rest/', include(rest_urls), name='rest_urls'),
+    url(r'^static/(?P<path>.*)$', serve, {'document_root': settings.STATICFILES_DIRS})
 ]
 
 handler404 = views.error404_handler
