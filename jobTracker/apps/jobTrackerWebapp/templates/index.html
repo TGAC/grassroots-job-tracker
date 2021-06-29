@@ -12,17 +12,16 @@
     <li>https://grassroots.tools/job-tracker/rest/get_jobs</li>
     <li>https://grassroots.tools/job-tracker/rest/get_job/job_id</li>
 
+    e.g.
+    https://grassroots.tools/job-tracker/rest/get_job/f3037e64-5159-46e3-944c-28b3491b84b9
+
 </ul>
 <h3>POST</h3>
 <ul>
     <li>https://grassroots.tools/job-tracker/rest/update_job/server_id</li>
-
-</ul>
-
-<p>rest interface takes care of timestamp when inserting and updating</p>
-
 <pre>
-  {
+    e.g. curl  -X POST https://grassroots.tools/job-tracker/rest/update_job/grassroots-backend -d '
+    {
     "so:description": "Chapman et al 2015 Whole-genome shotgun of hexaploid wheat Synthetic W7984 6,870,110 sequences; 9,134,017,866 total bases",
     "_id": {
       "$oid": "5d35e85a0617ebce3da190cf"
@@ -35,7 +34,14 @@
     "server_id": "grassroots-backend",
     "job_type": "blast_service_job",
     "service_name": "BlastN"
-  }
+  }'
+</pre>
+</ul>
+
+<p>rest interface takes care of timestamp when inserting and updating</p>
+
+<pre>
+
 </pre>
 
 <h2>HTML view</h2>
